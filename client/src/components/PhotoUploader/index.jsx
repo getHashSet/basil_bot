@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
+import "./photoUploader.css";
 
 export default class PhotoUploader extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class PhotoUploader extends Component {
       // This file starts at null because no files are selected at default
       selectedFile: null,
       upload: false,
-      fileName: ""
+      fileName: "",
+      lable: "CHOOSE A FILE"
     };
     this.uploadFileHandler = this.uploadFileHandler.bind(this);
     this.submitPhotoForUpload = this.submitPhotoForUpload.bind(this);
@@ -16,9 +18,9 @@ export default class PhotoUploader extends Component {
   }
 
   fileNameHandler(event) {
-      this.setState({
-        fileName: event.target.value
-      });
+    this.setState({
+      fileName: event.target.value,
+    });
   }
 
   uploadFileHandler(event) {
@@ -26,7 +28,7 @@ export default class PhotoUploader extends Component {
       selectedFile: event.target.files[0],
       loaded: 0,
       editMenu: "",
-      label: event.target.files[0].name,
+      lable: event.target.files[0].name,
     });
   }
 
@@ -37,7 +39,7 @@ export default class PhotoUploader extends Component {
     ) {
       // do nothing. There is no file selected yet.
       // console.log(this.state.backgroundImageName);
-      return alert('Please select a file.');
+      return alert("Please select a file.");
     } else {
       // there is a file stored in state. Lets try and upload it.
       // use the name of the current background.
@@ -49,18 +51,12 @@ export default class PhotoUploader extends Component {
         // console.log(this.state.selectedFile);
         // console.log("file is moving")
 
-
-        axios
-              .get(`/jimp/${this.state.fileName}`)
-              .then((res) => {
-                console.table(res.data);
-                axios.post("/jimp", data, {
-
-                })
-                .then(res => {
-                    console.log('uploaded.');
-                });
-              });
+        axios.get(`/jimp/${this.state.fileName}`).then((res) => {
+          console.table(res.data);
+          axios.post("/jimp", data, {}).then((res) => {
+            console.log("uploaded.");
+          });
+        });
       } else {
         /* file name error */
       }
@@ -70,33 +66,38 @@ export default class PhotoUploader extends Component {
   render() {
     return (
       <div className="photo_uploader_root component">
-        <input
-          id="input_file_name"
-          type="text"
-          name="input_file_name"
-          className="file_name"
-          onChange={this.fileNameHandler}
-        />
+        <div className="top_field">
+          {/* <label htmlFor="input_file_name">Name:</label> */}
+          <input
+            id="input_file_name"
+            type="text"
+            name="input_file_name"
+            className="file_name"
+            placeholder="Output File Name"
+            onChange={this.fileNameHandler}
+          />
+        </div>
 
-        <input
-          id="input_file"
-          type="file"
-          name="input_file_name"
-          onChange={this.uploadFileHandler}
-          className="upload_button"
-        />
+        <div className="bottom_field">
+          <input
+            id="input_file"
+            type="file"
+            name="input_file_name"
+            onChange={this.uploadFileHandler}
+            className="upload_button"
+          />
 
-        <label htmlFor={this.props.__parent_image_name}>
-          <ion-icon name="ios-folder-open"></ion-icon> {this.state.label}
-        </label>
+          <label htmlFor="input_file">
+            {this.state.lable}
+          </label>
+        </div>
 
-        <button
-          type="button"
-          className="button"
+        <div
+          className="btn"
           onClick={this.submitPhotoForUpload}
         >
           Upload
-        </button>
+        </div>
       </div>
     );
   }

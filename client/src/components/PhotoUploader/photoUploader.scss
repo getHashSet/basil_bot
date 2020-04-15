@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap');
+
+#input_file_name {
+    text-decoration: none;
+    margin: 0 1em;
+    padding: .5em;
+    font-size: 1.2em;
+    font-weight: 800;
+    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.photo_uploader_root {
+    margin: 1em auto;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .top_field {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 1em;
+    }
+
+    .bottom_field {
+        margin: 1em;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        #input_file {
+            display: none;
+        }
+        
+        label {
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        label:hover {
+            cursor: pointer;
+        }
+    }
+}

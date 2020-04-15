@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap");
+#input_file_name {
+  text-decoration: none;
+  margin: 0 1em;
+  padding: .5em;
+  font-size: 1.2em;
+  font-weight: 800;
+  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif; }
+
+.photo_uploader_root {
+  margin: 1em auto;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .photo_uploader_root .top_field {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 1em; }
+  .photo_uploader_root .bottom_field {
+    margin: 1em;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .photo_uploader_root .bottom_field #input_file {
+      display: none; }
+    .photo_uploader_root .bottom_field label {
+      text-transform: uppercase;
+      font-weight: 800; }
+    .photo_uploader_root .bottom_field label:hover {
+      cursor: pointer; }

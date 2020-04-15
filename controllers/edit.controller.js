@@ -9,9 +9,10 @@ function editController(obj) {
 
   jimp.read(obj.url).then((image) => {
     image.cover(1600, 1000, function () {});
-    image.quality(70);
+    image.quality(60);
     image.write(`./temp/${obj.name}_lg.jpg`, function () {
       console.log(`Created ${obj.name}_lg.jpg`);
+      console.log('Tiny PNG')
         const source = tinify.fromFile(`./temp/${obj.name}_lg.jpg`);
         source.toFile(`./temp/${obj.name}_lg.jpg`);
 
@@ -24,6 +25,7 @@ function editController(obj) {
             path.join(__dirname, `../temp/${obj.name}_md.jpg`),
             function () {
               console.log(`Created ${obj.name}_md.jpg`);
+              console.log('Tiny PNG')
               const source = tinify.fromFile(`./temp/${obj.name}_md.jpg`);
               source.toFile(`./temp/${obj.name}_md.jpg`);
             }
@@ -60,6 +62,7 @@ function editController(obj) {
       image.quality(70);
       image.write(`./temp/${obj.name}_sm.jpg`, function () {
         console.log(`Created ${obj.name}_sm.jpg`);
+        console.log('Tiny PNG')
         const source = tinify.fromFile(`./temp/${obj.name}_sm.jpg`);
         source.toFile(`./temp/${obj.name}_sm.jpg`);
       });
@@ -68,7 +71,7 @@ function editController(obj) {
     jimp.read(obj.url).then((image) => {
       image.cover(357, 667, function () {});
       image.quality(70);
-      image.blur(50);
+      image.blur(10);
       image.write(`./temp/${obj.name}_sm_ph.jpg`, function () {
         console.log(`Created ${obj.name}_sm_ph.jpg`);
       });
